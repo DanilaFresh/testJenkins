@@ -1,6 +1,7 @@
 spring:
   application:
     name: testSpring
+
   datasource:
     url: jdbc:postgresql://localhost:5432/crm
     username: codekitchen
@@ -11,3 +12,5 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+server:
+  port: 9090

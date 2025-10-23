@@ -25,7 +25,7 @@ pipeline {
         	steps {
         		sh "ls"
         		sh "java -version"
-        		sh 'mvn clean install'
+        		sh './mvnw clean install'
         	}
         }
     }
