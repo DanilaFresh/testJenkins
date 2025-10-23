@@ -25,6 +25,7 @@ pipeline {
         	steps {
         		sh "ls"
         		sh "java -version"
+        		sh 'chmod +x mvnw'  // Делаем исполняемым
         		sh './mvnw clean install'
         	}
         }
