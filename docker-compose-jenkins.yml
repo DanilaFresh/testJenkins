@@ -1,0 +1,21 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    privileged: true
+    user: root
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    container_name: jenkins
+    volumes:
+      - ./jenkins/jenkins_configuration:/var/jenkins_home
+      - ./jenkins/docker/docker.sock:/var/run/docker.sock
+
+  java-21-agent:
+    container_name: java-21-agent
+    image: jenkins/ssh-agent:jdk21
+    ports:
+      - "22:22"
+    environment:
+      JENKINS_AGENT_SSH_PUBKEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMskR5FJ4DHYc4YBfihAk6ktzE6/sv0+9mPwxToLhWWK java-21-agent
+    restart: unless-stopped
