@@ -35,7 +35,7 @@ pipeline {
         		sh "ls"
         		sh "java -version"
         		sh 'chmod +x mvnw'  // Делаем исполняемым
-        		sh './mvnw clean build'
+        		sh './mvnw clean install'
         	}
         }
 
@@ -47,6 +47,7 @@ pipeline {
 
         stage('Publish') {
         steps {
+            sh "./mvnw deploy"
             script {
                 String version = getArtifactVersion()
                 String groupId = getGroupId()
