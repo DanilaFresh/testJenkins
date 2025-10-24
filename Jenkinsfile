@@ -35,7 +35,7 @@ pipeline {
         		sh "ls"
         		sh "java -version"
         		sh 'chmod +x mvnw'  // Делаем исполняемым
-        		sh './mvnw clean install'
+        		sh './mvnw clean build'
         	}
         }
 
