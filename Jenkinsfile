@@ -29,14 +29,20 @@ pipeline {
         		sh './mvnw clean install'
         	}
         }
+
+        stage('Test') {
+                	steps {
+                		sh "./mvnw clean test"
+                	}
+                }
     }
 
     post {
         success {
-            echo 'Build succeeded!'
+            echo 'Build and Test succeeded!'
         }
         failure {
-            echo 'Build or Deploy failed!'
+            echo 'Build or Deploy or Test failed!'
         }
     }
 }
