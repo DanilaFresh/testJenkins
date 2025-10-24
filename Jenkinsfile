@@ -45,29 +45,29 @@ pipeline {
                 	}
                 }
 
-    stage('Publish') {
-       steps {
-         script {
-            String version = getArtifactVersion()
-            String groupId = getGroupId()
-            String artifactName = getArtifactName()
-            nexusArtifactUploader(
-                nexusVersion: NEXUS_VERSION,
-                protocol: NEXUS_PROTOCOL,
-                nexusUrl: NEXUS_URL,
-                groupId: groupId,
-                version: version,
-                repository: NEXUS_REPOSITORY,
-                credentialsId: NEXUS_CREDENTIAL_ID,
-                artifacts: [
-                    [artifactId: artifactName,
-                     classifier: '',
-                     file: LOCAL_JAR_FILE_LOCATION + artifactName + "-" + version + ".jar",
-                     type: 'jar']
-                ]
-             )
-          }
-       }
+        stage('Publish') {
+        steps {
+            script {
+                String version = getArtifactVersion()
+                String groupId = getGroupId()
+                String artifactName = getArtifactName()
+                nexusArtifactUploader(
+                    nexusVersion: NEXUS_VERSION,
+                    protocol: NEXUS_PROTOCOL,
+                    nexusUrl: NEXUS_URL,
+                    groupId: groupId,
+                    version: version,
+                    repository: NEXUS_REPOSITORY,
+                    credentialsId: NEXUS_CREDENTIAL_ID,
+                    artifacts: [
+                        [artifactId: artifactName,
+                        classifier: '',
+                        file: LOCAL_JAR_FILE_LOCATION + artifactName + "-" + version + ".jar",
+                        type: 'jar']
+                    ]
+                )
+            }
+        }
     }
    }
 
