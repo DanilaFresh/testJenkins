@@ -21,3 +21,11 @@ services:
     volumes:
       - ./jenkins/agent_ssh:/home/jenkins/.ssh  # Добавьте это: persistent storage для .ssh
     restart: unless-stopped
+
+  nexus:
+    image: sonatype/nexus3
+    volumes:
+      - "./nexus-data:/sonatype-work"
+    ports:
+      - "8081:8081"
+      - "8085:8085"
