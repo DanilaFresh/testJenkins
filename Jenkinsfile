@@ -4,7 +4,7 @@ pipeline {
      environment {
             NEXUS_VERSION="nexus3"
             NEXUS_PROTOCOL="http"
-            NEXUS_URL="nexus:8081/repository/demo-rep/"
+            NEXUS_URL="nexus:8081"
             NEXUS_REPOSITORY="demo-rep"
             NEXUS_CREDENTIAL_ID="nexus-creds"
             LOCAL_JAR_FILE_LOCATION="target/"
@@ -47,7 +47,6 @@ pipeline {
 
         stage('Publish') {
         steps {
-            sh "./mvnw deploy"
             script {
                 String version = getArtifactVersion()
                 String groupId = getGroupId()
